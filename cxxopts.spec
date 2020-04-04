@@ -53,6 +53,8 @@ popd
 %ninja_install -C %{_target_platform}
 
 %files devel
+%doc README.md
+%license LICENSE
 %{_includedir}/%{name}.hpp
 %{_libdir}/cmake/%{name}/
 
