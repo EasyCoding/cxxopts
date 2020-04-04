@@ -22,7 +22,9 @@ GNU style syntax for options.
 
 %package devel
 Summary: Development files for %{name}
-Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: %{name}-static%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires: libstdc++-devel%{?_isa}
 
 %description devel
 %{summary}.
