@@ -1,8 +1,9 @@
+%undefine __cmake_in_source_build
 %global debug_package %{nil}
 
 Name: cxxopts
 Version: 2.2.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 Summary: Lightweight C++ command line option parser
 License: MIT
@@ -31,26 +32,20 @@ Requires: libstdc++-devel%{?_isa}
 
 %prep
 %autosetup -p1
-mkdir -p %{_target_platform}
 
 %build
-pushd %{_target_platform}
-    %cmake -G Ninja \
+%cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCXXOPTS_ENABLE_INSTALL=ON \
     -DCXXOPTS_BUILD_EXAMPLES=OFF \
-    -DCXXOPTS_BUILD_TESTS=ON \
-    ..
-popd
-%ninja_build -C %{_target_platform}
+    -DCXXOPTS_BUILD_TESTS=ON
+%cmake_build
 
 %check
-pushd %{_target_platform}
-    ctest --output-on-failure
-popd
+%ctest
 
 %install
-%ninja_install -C %{_target_platform}
+%cmake_install
 
 %files devel
 %doc README.md
@@ -59,5 +54,8 @@ popd
 %{_libdir}/cmake/%{name}/
 
 %changelog
+* Mon Jul 27 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
 * Sat Apr 04 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 2.2.0-1
 - Initial SPEC release.
