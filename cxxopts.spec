@@ -3,7 +3,7 @@
 
 Name: cxxopts
 Version: 2.2.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 Summary: Lightweight C++ command line option parser
 License: MIT
@@ -54,6 +54,9 @@ Requires: libstdc++-devel%{?_isa}
 %{_libdir}/cmake/%{name}/
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.2.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Tue Aug 18 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 2.2.1-1
 - Updated to version 2.2.1.
 
